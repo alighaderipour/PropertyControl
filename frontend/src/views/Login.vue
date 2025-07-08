@@ -1,11 +1,10 @@
-<!-- frontend/src/views/Login.vue -->
 <template>
-  <div class="login-container">
+  <div class="login-container" dir="rtl">
     <div class="login-card">
-      <h2>Property Management System</h2>
+      <h2>سیستم مدیریت کالا</h2>
       <form @submit.prevent="handleLogin">
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="username">نام کاربری</label>
           <input
             type="text"
             id="username"
@@ -16,7 +15,7 @@
         </div>
 
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">کلمه عبور</label>
           <input
             type="password"
             id="password"
@@ -27,7 +26,7 @@
         </div>
 
         <button type="submit" :disabled="loading">
-          {{ loading ? "Logging in..." : "Login" }}
+          {{ loading ? "در حال ورود..." : "ورود" }}
         </button>
 
         <div v-if="error" class="error">{{ error }}</div>
@@ -60,7 +59,7 @@ const handleLogin = async () => {
     await authStore.login(form.value);
     router.push("/dashboard");
   } catch (err) {
-    error.value = "Invalid credentials";
+    error.value = "نام کاربری یا رمز عبور اشتباه است";
   } finally {
     loading.value = false;
   }
@@ -74,6 +73,7 @@ const handleLogin = async () => {
   align-items: center;
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  direction: rtl;  /* <--- Forces RTL layout for all children */
 }
 
 .login-card {
@@ -87,12 +87,14 @@ const handleLogin = async () => {
 
 .form-group {
   margin-bottom: 1rem;
+  text-align: right;  /* <--- Align labels and inputs to right side */
 }
 
 label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
+  text-align: right;  /* <--- */
 }
 input {
   width: 100%;
@@ -100,6 +102,8 @@ input {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
+  text-align: right; /* <--- For RTL input */
+  direction: rtl;    /* <--- Explicit RTL for text fields */
 }
 
 button {
@@ -112,6 +116,7 @@ button {
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s;
+  margin-top: 1rem;
 }
 
 button:hover:not(:disabled) {

@@ -1,10 +1,21 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
+import { computed } from 'vue'
+import { useAuthStore } from '@/stores/auth'
+
+const route = useRoute()
+const authStore = useAuthStore()
+const hideNavOnRoutes = ['/login', '/register']
+
+// Show nav for authenticated users and not login/register page
+const shouldShowNav = computed(() => {
+  return authStore.isAuthenticated && !hideNavOnRoutes.includes(route.path)
+})
 </script>
 
 <template>
-  <header>
-    <nav class="fancy-navbar">
+  <header v-if="shouldShowNav">
+    <nav class="fancy-navbar" >
       <!-- Logo -->
       <RouterLink to="/" class="logo-link" aria-label="Home">
         <img
@@ -16,7 +27,7 @@ import { RouterLink, RouterView } from 'vue-router'
         />
       </RouterLink>
 
-      <ul class="nav-links">
+      <ul class="nav-links"  >
         <li><RouterLink to="/" exact-active-class="active">Home</RouterLink></li>
         <li><RouterLink to="/about" exact-active-class="active">About</RouterLink></li>
         <li><RouterLink to="/properties" exact-active-class="active">Properties</RouterLink></li>
