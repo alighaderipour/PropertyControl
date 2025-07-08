@@ -75,10 +75,39 @@
 
     <!-- Transfer Modal ... no changes ... -->
     <div v-if="showTransferModal" class="modal-overlay" @click="closeTransferModal">
-      <div class="modal" @click.stop>
-        <!-- ...modal content as in your code... -->
-      </div>
+  <div class="modal" @click.stop>
+    <h2>Transfer "{{ selectedProperty?.name }}"</h2>
+
+    <div class="form-group">
+      <label for="to_department">Transfer To Department</label>
+      <select v-model="transferForm.to_department" id="to_department">
+        <option value="">Select Department</option>
+        <option v-for="dept in departments" :key="dept.id" :value="dept.id">
+          {{ dept.name }}
+        </option>
+      </select>
     </div>
+
+    <div class="form-group">
+      <label for="reason">Reason</label>
+      <input type="text" id="reason" v-model="transferForm.reason" />
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Notes</label>
+      <textarea id="notes" v-model="transferForm.notes"></textarea>
+    </div>
+
+    <div class="modal-actions">
+      <button @click="closeTransferModal">Cancel</button>
+      <button :disabled="transferring" @click="submitTransfer">
+        {{ transferring ? 'Transferring...' : 'Submit Transfer' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+
   </div>
 </template>
 

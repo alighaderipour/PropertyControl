@@ -8,7 +8,7 @@
           <p class="page-subtitle">Manage and track property transfers across departments</p>
         </div>
         <div class="header-actions">
-          <router-link to="/transfers/add" class="btn btn-primary">
+          <router-link to="/properties" class="btn btn-primary">
             <span class="btn-icon">➕</span>
             New Transfer
           </router-link>
