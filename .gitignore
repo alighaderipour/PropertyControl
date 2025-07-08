@@ -1,0 +1,81 @@
+# === PYTHON / DJANGO ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+.env
+*.env
+.env.*
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+.Python
+
+# Coverage & Testing
+.coverage*
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
+test-results/
+nosetests.xml
+coverage.xml
+
+# Migrations - only ignore __pycache__, not actual migrations
+**/migrations/__pycache__/
+
+# === NODE / VUE FRONTEND ===
+node_modules/
+dist/
+dist-ssr/
+*.local
+*.tsbuildinfo
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# === OS-SPECIFIC FILES ===
+.DS_Store
+Thumbs.db
+
+# === IDEs ===
+
+# VSCode
+.vscode/
+!.vscode/extensions.json  # Optional: track recommended extensions only
+
+# JetBrains (e.g. PyCharm, WebStorm)
+.idea/
+
+# Misc Editors
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# === OTHERS ===
+pip-log.txt
+pip-delete-this-directory.txt
